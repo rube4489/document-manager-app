@@ -10,7 +10,7 @@ import EditFileModal from "./EditFileModal";
 
 const TableScreen = ({ userListAux, setUserListAux }) => {
   const [message, setMessage] = useState("");
-  console.log(userListAux);
+
   return (
     <Container className="mt-5">
       <Row>

@@ -127,10 +127,7 @@ const FormCreateFile = (props) => {
             <Badge className="  mb-3 ps-3 pe-3 pt-2 pb-2">
               {urlFile}
               <CloseButton
-                onClick={() => {
-                  console.log("click");
-                  setShowFile(true);
-                }}
+                onClick={() => setShowFile(true)}
                 className="ms-4"
                 variant="white"
               />

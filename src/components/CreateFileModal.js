@@ -19,6 +19,7 @@ const CreateFile = ({ setUserListAux }) => {
     if (fileType && owner && urlFile) {
       setLoading(true);
       e.preventDefault();
+
       try {
         const newFile = await createItem({
           _id: Math.random().toString(16).slice(2),
@@ -29,7 +30,7 @@ const CreateFile = ({ setUserListAux }) => {
           description: description,
           linkDownload: "",
         });
-        console.log(newFile);
+
         const url = await uploadFile(urlFile, urlFile.name);
 
         await updateItem(newFile, { linkDownload: url });
