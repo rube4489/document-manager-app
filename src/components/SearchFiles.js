@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
 import { getItems } from "../api/api";
 
-const SearchFiles = ({ setUserListAux, setMessage }) => {
+const SearchFiles = ({ setDataList, setMessage }) => {
   const [nameFile, setNameFile] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [date, setDate] = useState("");
@@ -21,31 +21,51 @@ const SearchFiles = ({ setUserListAux, setMessage }) => {
     getData();
   }, []);
 
+  const clearState = (message) => {
+    setNameFile("");
+    setOwnerName("");
+    setDate("");
+    setMessage(message || "");
+  };
+
   const searchFile = async () => {
-    const foundFile = dataAux.filter(
-      (file) =>
-        file?.name?.toLowerCase() === nameFile?.toLowerCase() ||
-        file?.owner[0]?.toLowerCase() === ownerName?.toLowerCase() ||
-        file?.creationDate === date
-    );
-    if (foundFile?.length > 0) {
-      setUserListAux(foundFile);
-      setNameFile("");
-      setOwnerName("");
-      setDate("");
+    if (nameFile) {
+      const newData = dataAux?.filter(function (item) {
+        const itemData = item.name.toUpperCase();
+        const textData = nameFile.toUpperCase();
+
+        return itemData.indexOf(textData) > -1;
+      });
+      setDataList(newData);
+      clearState();
+    } else if (ownerName) {
+      const newData = dataAux?.filter(function (item) {
+        const itemData = item.owner[0].toUpperCase();
+        const textData = ownerName.toUpperCase();
+
+        return itemData.indexOf(textData) > -1;
+      });
+      setDataList(newData);
+      clearState();
+    } else if (date) {
+      const newData = dataAux?.filter(function (item) {
+        const itemData = item.creationDate;
+        const textData = date;
+
+        return itemData.indexOf(textData) > -1;
+      });
+      setDataList(newData);
+      clearState();
     } else {
-      setUserListAux([]);
-      setNameFile("");
-      setOwnerName("");
-      setDate("");
-      setMessage("No se encontraron archivos");
+      setDataList([]);
+      clearState("No se encontraron archivos");
     }
   };
 
   const reload = async () => {
     const data = await getItems();
-    setMessage("");
-    setUserListAux(data);
+    clearState();
+    setDataList(data);
   };
   return (
     <Form>
