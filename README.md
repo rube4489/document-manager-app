@@ -12,8 +12,6 @@
 
 ## Tecnologias
 
-Dillinger uses a number of open source projects to work properly:
-
 - [React JS] - Libreria de javascript for web apps!
 - [Reactstrap] - Libreria css basada en bootstrap pero adaptada a componentes.
 - [Firebase] - Plataforma móvil de Google utilizada para almacenar los archivos.
