@@ -107,7 +107,7 @@ const TableScreen = ({ userListAux, setUserListAux }) => {
       </Table>
       {(userListAux.length === 0 || message) && (
         <Alert color="secondary">
-          {message || "Sin archivos cargados. ¡Carga uno nuevo !"}
+          {message || "Sin archivos cargados. ¡ Carga uno nuevo !"}
         </Alert>
       )}
     </Container>
