@@ -5,7 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import FormCreateFile from "./forms/FormCreateAndEditFile";
 import { createItem, getItems, updateItem, uploadFile } from "../api/api";
 
-const CreateFile = ({ setUserListAux }) => {
+const CreateFile = ({ setDataList }) => {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [fileType, setFileType] = useState("");
@@ -36,7 +36,7 @@ const CreateFile = ({ setUserListAux }) => {
         await updateItem(newFile, { linkDownload: url });
 
         const data = await getItems();
-        setUserListAux(data);
+        setDataList(data);
         setDescription("");
         setFileType("");
         setOwner("");

@@ -8,26 +8,18 @@ import DeleteFileModal from "./DeleteFileModal";
 import CreateFileModal from "./CreateFileModal";
 import EditFileModal from "./EditFileModal";
 
-const TableScreen = ({ userListAux, setUserListAux }) => {
+const TableScreen = ({ dataList, setDataList }) => {
   const [message, setMessage] = useState("");
 
   return (
     <Container className="mt-5">
       <Row>
         <Col xs={12} lg={9}>
-          <SearchFiles
-            setMessage={setMessage}
-            userListAux={userListAux}
-            setUserListAux={setUserListAux}
-          />
+          <SearchFiles setMessage={setMessage} setDataList={setDataList} />
         </Col>
         <Col xs={12} lg={3}>
           <div className="d-flex justify-content-end mt-sm-0 mt-3">
-            <CreateFileModal
-              add={true}
-              userListAux={userListAux}
-              setUserListAux={setUserListAux}
-            />
+            <CreateFileModal add={true} setDataList={setDataList} />
           </div>
         </Col>
       </Row>
@@ -44,8 +36,8 @@ const TableScreen = ({ userListAux, setUserListAux }) => {
           </tr>
         </thead>
         <tbody>
-          {userListAux?.length > 0 &&
-            userListAux?.map((file, index) => (
+          {dataList?.length > 0 &&
+            dataList?.map((file, index) => (
               <tr key={index}>
                 <td>{file.name}</td>
                 <td>{file.creationDate}</td>
@@ -89,15 +81,10 @@ const TableScreen = ({ userListAux, setUserListAux }) => {
                         </a>
                       </Button>
                       <DeleteFileModal
-                        userListAux={userListAux}
                         fileSelected={file}
-                        setUserListAux={setUserListAux}
+                        setDataList={setDataList}
                       />
-                      <EditFileModal
-                        setUserListAux={setUserListAux}
-                        file={file}
-                        userListAux={userListAux}
-                      />
+                      <EditFileModal setDataList={setDataList} file={file} />
                     </div>
                   }
                 </td>
@@ -105,7 +92,7 @@ const TableScreen = ({ userListAux, setUserListAux }) => {
             ))}
         </tbody>
       </Table>
-      {(userListAux.length === 0 || message) && (
+      {(dataList.length === 0 || message) && (
         <Alert color="secondary">
           {message || "Sin archivos cargados. ¡ Carga uno nuevo !"}
         </Alert>

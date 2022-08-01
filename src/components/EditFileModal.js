@@ -5,7 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import FormCreateFile from "./forms/FormCreateAndEditFile";
 import { getItems, updateItem } from "../api/api";
 
-const EditFileModal = ({ file, setUserListAux }) => {
+const EditFileModal = ({ file, setDataList }) => {
   const [modal, setModal] = useState(false);
   const [fileType, setFileType] = useState(file?.type || "");
   const [owner, setOwner] = useState(file?.owner || []);
@@ -13,6 +13,7 @@ const EditFileModal = ({ file, setUserListAux }) => {
   const [urlFile, setUrlFile] = useState(file?.name || "");
   const [loading, setLoading] = useState(false);
   const [showFile, setShowFile] = useState(false);
+
   const toggle = () => {
     setModal(!modal);
     setShowFile(false);
@@ -32,7 +33,7 @@ const EditFileModal = ({ file, setUserListAux }) => {
         });
 
         const data = await getItems();
-        setUserListAux(data);
+        setDataList(data);
         setLoading(false);
         toggle();
       } catch (err) {
@@ -58,7 +59,7 @@ const EditFileModal = ({ file, setUserListAux }) => {
             setOwner={setOwner}
             setUrlFile={setUrlFile}
             setDescription={setDescription}
-            setUserListAux={setUserListAux}
+            setUserListAux={setDataList}
             updateList={updateList}
             toggle={toggle}
             loading={loading}

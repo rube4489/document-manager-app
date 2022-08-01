@@ -3,17 +3,17 @@ import TableScreen from "./components/TableScreen";
 import { getItems } from "./api/api";
 
 const App = () => {
-  const [userListAux, setUserListAux] = useState([]);
+  const [dataList, setDataList] = useState([]);
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
     const data = await getItems();
-    setUserListAux(data);
+    setDataList(data);
   };
   return (
-    <TableScreen userListAux={userListAux} setUserListAux={setUserListAux} />
+    <TableScreen dataList={dataList} setDataList={setDataList} />
   );
 };
 

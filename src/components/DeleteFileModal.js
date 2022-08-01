@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { deleteItem, getItems } from "../api/api";
 
-const DeleteFileModal = ({ fileSelected, setUserListAux }) => {
+const DeleteFileModal = ({ fileSelected, setDataList }) => {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const toggle = () => setModal(!modal);
@@ -21,7 +21,7 @@ const DeleteFileModal = ({ fileSelected, setUserListAux }) => {
     try {
       await deleteItem(fileSelected.id);
       const newData = await getItems();
-      setUserListAux(newData);
+      setDataList(newData);
       toggle();
     } catch (err) {
       alert(err.message);
