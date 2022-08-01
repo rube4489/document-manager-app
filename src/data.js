@@ -1,40 +1,8 @@
 export const userList = [
-  "Pedro Gonzalez",
-  "Juana Perez",
-  "kala Cordara",
-  "Jose Pepe",
-  "Gustavo Adn",
-  "Jeremias Sissino",
-  "Luis Alberto",
-];
-
-export const fileList = [
-  {
-    name: "Factura",
-    createDate: new Date(),
-    documentType: "Privado",
-    owner: "Ruben",
-    link: "https://drive.google.com/uc?id=1fvUjURyjpCysp3wcA9Oadji88oNsYoE-&export=download",
-  },
-  {
-    name: "Factura",
-    createDate: new Date(),
-    documentType: "Privado",
-    owner: "Ruben",
-    link: "https://drive.google.com/uc?id=1fvUjURyjpCysp3wcA9Oadji88oNsYoE-&export=download",
-  },
-  {
-    name: "Factura",
-    createDate: new Date(),
-    documentType: "Privado",
-    owner: "Ruben",
-    link: "https://drive.google.com/uc?id=1fvUjURyjpCysp3wcA9Oadji88oNsYoE-&export=download",
-  },
-  {
-    name: "Factura",
-    createDate: new Date(),
-    documentType: "Privado",
-    owner: "Ruben",
-    link: "https://drive.google.com/uc?id=1fvUjURyjpCysp3wcA9Oadji88oNsYoE-&export=download",
-  },
+  { id: Math.random(), name: "Ruben Lopez" },
+  { id: Math.random(), name: "Kala Cordara" },
+  { id: Math.random(), name: "Luis Alberto" },
+  { id: Math.random(), name: "Camila Fontana" },
+  { id: Math.random(), name: "Juan Perez" },
+  { id: Math.random(), name: "Cristina Noemi" },
 ];
